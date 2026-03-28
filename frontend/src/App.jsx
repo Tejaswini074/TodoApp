@@ -44,172 +44,160 @@ function App() {
 
   return (
     <>
-     <style>{`
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+      <style>{`
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
 
-  body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    min-height: 100vh;
-  }
+        body {
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          background: linear-gradient(135deg, #667eea, #764ba2);
+          min-height: 100vh;
 
-  .todo-container {
-    max-width: 500px;
-    margin: 60px auto;
-    padding: 25px;
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(12px);
-    border-radius: 15px;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.2);
-    text-align: center;
-    color: #fff;
-  }
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
 
-  h2 {
-    margin-bottom: 20px;
-    font-weight: 600;
-    letter-spacing: 1px;
-  }
+        .todo-container {
+          max-width: 500px;
+          width: 100%;
+          padding: 25px;
+          background: rgba(255, 255, 255, 0.15);
+          backdrop-filter: blur(12px);
+          border-radius: 15px;
+          box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+          text-align: center;
+          color: #fff;
+        }
 
-  /* Input Section */
-  .todo-input {
-    padding: 12px;
-    width: 65%;
-    border: none;
-    border-radius: 8px;
-    outline: none;
-    margin-right: 10px;
-    font-size: 14px;
-  }
+        h2 {
+          margin-bottom: 20px;
+          font-weight: 600;
+          letter-spacing: 1px;
+        }
 
-  .add-btn {
-    padding: 12px 16px;
-    background: #00c6ff;
-    background: linear-gradient(to right, #00c6ff, #0072ff);
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: 0.3s;
-    font-weight: 500;
-  }
+        .todo-input {
+          padding: 12px;
+          width: 65%;
+          border: none;
+          border-radius: 8px;
+          outline: none;
+          margin-right: 10px;
+          font-size: 14px;
+        }
 
-  .add-btn:hover {
-    transform: scale(1.05);
-    opacity: 0.9;
-  }
+        .add-btn {
+          padding: 12px 16px;
+          background: linear-gradient(to right, #00c6ff, #0072ff);
+          color: white;
+          border: none;
+          border-radius: 8px;
+          cursor: pointer;
+          transition: 0.3s;
+          font-weight: 500;
+        }
 
-  /* List */
-  .todo-list {
-    list-style: none;
-    padding: 0;
-    margin-top: 25px;
-  }
+        .add-btn:hover {
+          transform: scale(1.05);
+          opacity: 0.9;
+        }
 
-  .todo-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: rgba(255,255,255,0.2);
-    padding: 12px;
-    margin-bottom: 12px;
-    border-radius: 10px;
-    backdrop-filter: blur(6px);
-    transition: 0.3s;
-  }
+        .todo-list {
+          list-style: none;
+          padding: 0;
+          margin-top: 25px;
+        }
 
-  .todo-item:hover {
-    transform: translateY(-2px);
-    background: rgba(255,255,255,0.3);
-  }
+        .todo-item {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          background: rgba(255,255,255,0.2);
+          padding: 12px;
+          margin-bottom: 12px;
+          border-radius: 10px;
+          backdrop-filter: blur(6px);
+          transition: 0.3s;
+        }
 
-  .todo-item span {
-    flex: 1;
-    text-align: left;
-    font-size: 15px;
-  }
+        .todo-item:hover {
+          transform: translateY(-2px);
+          background: rgba(255,255,255,0.3);
+        }
 
-  /* Buttons */
-  .todo-item button {
-    margin-left: 6px;
-    padding: 6px 10px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 12px;
-    transition: 0.3s;
-  }
+        .todo-item span {
+          flex: 1;
+          text-align: left;
+          font-size: 15px;
+        }
 
-  /* Edit */
-  .todo-item button:nth-child(2) {
-    background: #facc15;
-    color: #000;
-  }
+        .todo-item button {
+          margin-left: 6px;
+          padding: 6px 10px;
+          border: none;
+          border-radius: 6px;
+          cursor: pointer;
+          font-size: 12px;
+          transition: 0.3s;
+        }
 
-  .todo-item button:nth-child(2):hover {
-    background: #eab308;
-  }
+        .todo-item button:nth-child(2) {
+          background: #facc15;
+          color: #000;
+        }
 
-  /* Delete */
-  .todo-item button:nth-child(3) {
-    background: #ef4444;
-    color: #fff;
-  }
+        .todo-item button:nth-child(3) {
+          background: #ef4444;
+          color: #fff;
+        }
 
-  .todo-item button:nth-child(3):hover {
-    background: #dc2626;
-  }
+        .todo-item button:first-of-type {
+          background: #22c55e;
+          color: white;
+        }
 
-  /* Save */
-  .todo-item button:first-of-type {
-    background: #22c55e;
-    color: white;
-  }
+        .todo-item button:last-of-type {
+          background: #6b7280;
+          color: white;
+        }
 
-  /* Cancel */
-  .todo-item button:last-of-type {
-    background: #6b7280;
-    color: white;
-  }
+        .todo-item input {
+          flex: 1;
+          padding: 6px;
+          margin-right: 10px;
+          border-radius: 6px;
+          border: none;
+          outline: none;
+        }
 
-  /* Edit Input */
-  .todo-item input {
-    flex: 1;
-    padding: 6px;
-    margin-right: 10px;
-    border-radius: 6px;
-    border: none;
-    outline: none;
-  }
+        @media (max-width: 600px) {
+          .todo-container {
+            margin: 10px;
+          }
 
-  /* Responsive */
-  @media (max-width: 600px) {
-    .todo-container {
-      margin: 20px;
-    }
-
-    .todo-input {
-      width: 60%;
-    }
-  }
-`}</style>
+          .todo-input {
+            width: 60%;
+          }
+        }
+      `}</style>
 
       <div className="todo-container">
         <h2>TODO App</h2>
 
-        <input
-          className="todo-input"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          placeholder="Enter task"
-        />
-        <button className="add-btn" onClick={addTodo}>
-          Add
-        </button>
+        <div style={{ marginBottom: "15px" }}>
+          <input
+            className="todo-input"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            placeholder="Enter task"
+          />
+          <button className="add-btn" onClick={addTodo}>
+            Add
+          </button>
+        </div>
 
         <ul className="todo-list">
           {todos.map((todo) => (
