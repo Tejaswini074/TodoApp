@@ -8,7 +8,8 @@ function App() {
   const [editTitle, setEditTitle] = useState("");
 
   const fetchTodos = async () => {
-    const res = axios.get(`${API}/api/todos`);;
+    const res = axios.get(`${API}/api/todos`);
+      console.log(res.data);
     setTodos(res.data);
   };
 
