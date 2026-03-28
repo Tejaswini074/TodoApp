@@ -7,11 +7,17 @@ function App() {
   const [editId, setEditId] = useState(null);
   const [editTitle, setEditTitle] = useState("");
 
-  const fetchTodos = async () => {
-    const res = axios.get(`${API}/todos`);
-      console.log(res.data);
-    setTodos(res.data);
-  };
+const fetchTodos = async () => {
+  try {
+    const res = await axios.get(`${API}/todos`);
+    console.log("API DATA:", res.data);
+
+    setTodos(Array.isArray(res.data) ? res.data : []);
+  } catch (error) {
+    console.error("Fetch error:", error);
+    setTodos([]);
+  }
+};
 
   useEffect(() => {
     fetchTodos();
