@@ -1,8 +1,16 @@
-const { Sequelize } =require("sequelize");
 
-const sequelize =new Sequelize("TodoApp_db","root","Root@123",{
-    host:"localhost",
-    dialect:"mysql",
-});
+const { Sequelize } = require('sequelize');
+
+const sequelize = new Sequelize(
+    process.env.MYSQLDATABASE,
+    process.env.MYSQLUSER,
+    process.env.MYSQLPASSWORD,
+    {
+        host: process.env.MYSQLHOST,
+        port: process.env.MYSQLPORT,
+        dialect: 'mysql',
+        logging: false,
+    }
+);
 
 module.exports = sequelize;
