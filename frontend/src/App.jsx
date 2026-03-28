@@ -44,92 +44,159 @@ function App() {
 
   return (
     <>
-      <style>{`
-        body {
-          font-family: Arial, sans-serif;
-          background: #f4f6f8;
-        }
+     <style>{`
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
-        .todo-container {
-          max-width: 500px;
-          margin: 50px auto;
-          padding: 20px;
-          background: white;
-          border-radius: 10px;
-          box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-          text-align: center;
-        }
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    min-height: 100vh;
+  }
 
-        h2 {
-          margin-bottom: 20px;
-        }
+  .todo-container {
+    max-width: 500px;
+    margin: 60px auto;
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+    text-align: center;
+    color: #fff;
+  }
 
-        .todo-input {
-          padding: 10px;
-          width: 65%;
-          border: 1px solid #ccc;
-          border-radius: 5px;
-          margin-right: 10px;
-        }
+  h2 {
+    margin-bottom: 20px;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
 
-        .add-btn {
-          padding: 10px 15px;
-          background: #007bff;
-          color: white;
-          border: none;
-          border-radius: 5px;
-          cursor: pointer;
-        }
+  /* Input Section */
+  .todo-input {
+    padding: 12px;
+    width: 65%;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    margin-right: 10px;
+    font-size: 14px;
+  }
 
-        .add-btn:hover {
-          background: #0056b3;
-        }
+  .add-btn {
+    padding: 12px 16px;
+    background: #00c6ff;
+    background: linear-gradient(to right, #00c6ff, #0072ff);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: 500;
+  }
 
-        .todo-list {
-          list-style: none;
-          padding: 0;
-          margin-top: 20px;
-        }
+  .add-btn:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+  }
 
-        .todo-item {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          background: #f9f9f9;
-          padding: 10px;
-          margin-bottom: 10px;
-          border-radius: 5px;
-        }
+  /* List */
+  .todo-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 25px;
+  }
 
-        .todo-item span {
-          flex: 1;
-          text-align: left;
-        }
+  .todo-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255,255,255,0.2);
+    padding: 12px;
+    margin-bottom: 12px;
+    border-radius: 10px;
+    backdrop-filter: blur(6px);
+    transition: 0.3s;
+  }
 
-        .todo-item button {
-          margin-left: 5px;
-          padding: 5px 10px;
-          border: none;
-          border-radius: 5px;
-          cursor: pointer;
-        }
+  .todo-item:hover {
+    transform: translateY(-2px);
+    background: rgba(255,255,255,0.3);
+  }
 
-        .todo-item button:first-of-type {
-          background: #28a745;
-          color: white;
-        }
+  .todo-item span {
+    flex: 1;
+    text-align: left;
+    font-size: 15px;
+  }
 
-        .todo-item button:last-of-type {
-          background: #dc3545;
-          color: white;
-        }
+  /* Buttons */
+  .todo-item button {
+    margin-left: 6px;
+    padding: 6px 10px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: 0.3s;
+  }
 
-        .todo-item input {
-          flex: 1;
-          padding: 5px;
-          margin-right: 10px;
-        }
-      `}</style>
+  /* Edit */
+  .todo-item button:nth-child(2) {
+    background: #facc15;
+    color: #000;
+  }
+
+  .todo-item button:nth-child(2):hover {
+    background: #eab308;
+  }
+
+  /* Delete */
+  .todo-item button:nth-child(3) {
+    background: #ef4444;
+    color: #fff;
+  }
+
+  .todo-item button:nth-child(3):hover {
+    background: #dc2626;
+  }
+
+  /* Save */
+  .todo-item button:first-of-type {
+    background: #22c55e;
+    color: white;
+  }
+
+  /* Cancel */
+  .todo-item button:last-of-type {
+    background: #6b7280;
+    color: white;
+  }
+
+  /* Edit Input */
+  .todo-item input {
+    flex: 1;
+    padding: 6px;
+    margin-right: 10px;
+    border-radius: 6px;
+    border: none;
+    outline: none;
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .todo-container {
+      margin: 20px;
+    }
+
+    .todo-input {
+      width: 60%;
+    }
+  }
+`}</style>
 
       <div className="todo-container">
         <h2>TODO App</h2>
