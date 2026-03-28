@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-
+const API = import.meta.env.VITE_API_URL;
 function App() {
   const [todos, setTodos] = useState([]);
   const [title, setTitle] = useState("");
@@ -8,7 +8,7 @@ function App() {
   const [editTitle, setEditTitle] = useState("");
 
   const fetchTodos = async () => {
-    const res = await axios.get("http://localhost:3000/todos");
+    const res = axios.get(`${API}/api/todos`);;
     setTodos(res.data);
   };
 
@@ -18,13 +18,13 @@ function App() {
 
   const addTodo = async () => {
     if (!title.trim()) return;
-    await axios.post("http://localhost:3000/todos", { title });
+    await axios.post(`${API}/api/todos`, { title });
     setTitle("");
     fetchTodos();
   };
 
   const deleteTodo = async (id) => {
-    await axios.delete(`http://localhost:3000/todos/${id}`);
+    await axios.delete(`${API}/api/todos/${id}`);
     fetchTodos();
   };
 
@@ -34,7 +34,7 @@ function App() {
   };
 
   const updateTodo = async () => {
-    await axios.put(`http://localhost:3000/todos/${editId}`, {
+    await axios.put(`${API}/api/todos/${editId}`, {
       title: editTitle,
     });
     setEditId(null);
