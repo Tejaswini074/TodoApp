@@ -201,7 +201,7 @@ function App() {
         </div>
 
         <ul className="todo-list">
-          {todos.map((todo) => (
+         {Array.isArray(todos) && todos.map((todo) =>(
             <li key={todo.id} className="todo-item">
               {editId === todo.id ? (
                 <>
