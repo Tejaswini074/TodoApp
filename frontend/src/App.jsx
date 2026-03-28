@@ -8,7 +8,7 @@ function App() {
   const [editTitle, setEditTitle] = useState("");
 
   const fetchTodos = async () => {
-    const res = axios.get(`${API}/api/todos`);
+    const res = axios.get(`${API}/todos`);
       console.log(res.data);
     setTodos(res.data);
   };
@@ -19,13 +19,13 @@ function App() {
 
   const addTodo = async () => {
     if (!title.trim()) return;
-    await axios.post(`${API}/api/todos`, { title });
+    await axios.post(`${API}/todos`, { title });
     setTitle("");
     fetchTodos();
   };
 
   const deleteTodo = async (id) => {
-    await axios.delete(`${API}/api/todos/${id}`);
+    await axios.delete(`${API}/todos/${id}`);
     fetchTodos();
   };
 
@@ -35,7 +35,7 @@ function App() {
   };
 
   const updateTodo = async () => {
-    await axios.put(`${API}/api/todos/${editId}`, {
+    await axios.put(`${API}/todos/${editId}`, {
       title: editTitle,
     });
     setEditId(null);
